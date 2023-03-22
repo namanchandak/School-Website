@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+.bg-image {
+  background-image: url('./Front.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
