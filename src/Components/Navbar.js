@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
+
 export default class Navbar extends Component {
   render() {
     return (
       <div  >
-        <nav  className="navbar navbar-expand-lg bg-transparent  " > 
+        <nav  className=" navbar navbar-expand-lg bg-transparent  " > 
   <div className="container-fluid " >
-    <a className="navbar-brand " href="/" style={{ color: '#00ff7f' }}    >Home</a>
+    <a className="navbar-brand  " href="/" style={{ color: '#00ff7f' }}    >Home</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -18,6 +19,10 @@ export default class Navbar extends Component {
         </li>
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" style={{ color: '#00ff7f' }} href="/">Results</a>
+          
+        </li>
+        <li className="nav-item">
+          <a className="nav-link active" aria-current="page" style={{ color: '#00ff7f' }} href="/">Gallery</a>
           
         </li>
         <li className="nav-item">
