@@ -2,14 +2,12 @@ import connectDb from "../../middleware/mongoose";
 
 import User from "../../models/User";
 
-console.log("GHjgh")
+// console.log("GHjgh")
 const handler =async (req,res)=>
 {
-    
         let name =  await User.find()
-        res.status(200 ).json({User})
-
-
+        console.log(name)
+        res.status(200 ).json({name})
 } 
 
-export default connectDb(handler  )
+export default connectDb(handler)
