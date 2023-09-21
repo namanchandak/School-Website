@@ -1,0 +1,14 @@
+{
+  "name": "schoolserver",
+  "version": "1.0.0",
+  "description": "this is school server / backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "naman and team",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^7.5.2"
+  }
+}
