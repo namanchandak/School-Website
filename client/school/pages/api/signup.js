@@ -2,7 +2,7 @@ import connectDb from "../../middleware/mongoose";
 
 import User from "../../models/User";
 
-// console.log("GHjgh");
+console.log("GHjgh");
 const handler = async (req, res) => {
   // console.log(req.body+ "naman")
   if (req.method == "POST") {
