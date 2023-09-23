@@ -1,4 +1,5 @@
 import connectDb from "../../middleware/mongoose";
+var CryptoJS = require("crypto-js");
 
 import User from "../../models/User";
 
@@ -10,21 +11,23 @@ const handler = async (req, res) => {
 
     let user = await User.findOne({ "userid": req.body.userid });
     if (user) {
+      const bytes  = CryptoJS.AES.decrypt(user.password, 'secret key 123');
+      var originalText = bytes.toString(CryptoJS.enc.Utf8);
       if (
         req.body.userid == user.userid &&
-        req.body.password == user.password
+        req.body.password == originalText
       ) {
-        // console.log("success")
+        console.log("success")
         res.status(200).json({ success: "success", userid: user.userid, name: user.name });
       }
       else
       {
-        res.status(200).json({ success: "false", error :"Invalid Credentials!" });
+        res.status(400).json({ success: "false", error :"Invalid Credentials!" });
       }
     }
     else
     {
-      res.status(200).json({ success: "false", error :"No User Found!" });
+      res.status(400).json({ success: "false", error :"No User Found!" });
     } 
   }
    else {
