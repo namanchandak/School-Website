@@ -1,9 +1,12 @@
 import connectDb from "../../middleware/mongoose";
 var CryptoJS = require("crypto-js");
+var jwt = require('jsonwebtoken');
+
+
 
 import User from "../../models/User";
 
-console.log("GHjgh");
+// console.log("GHjgh");
 const handler = async (req, res) => {
   // console.log(req.body+ "naman")
   if (req.method == "POST") {
@@ -11,14 +14,15 @@ const handler = async (req, res) => {
 
     let user = await User.findOne({ "userid": req.body.userid });
     if (user) {
-      const bytes  = CryptoJS.AES.decrypt(user.password, 'secret key 123');
+      const bytes  = CryptoJS.AES.decrypt(user.password, 'secret key 123', { expiresIn: 60 });
       var originalText = bytes.toString(CryptoJS.enc.Utf8);
       if (
         req.body.userid == user.userid &&
         req.body.password == originalText
       ) {
-        console.log("success")
-        res.status(200).json({ success: "success", userid: user.userid, name: user.name });
+        var token = jwt.sign({  userid: user.userid, name: user.name }, 'shhhhh');
+        // console.log("token  generated")
+        res.status(200).json( {success:  true ,token});
       }
       else
       {

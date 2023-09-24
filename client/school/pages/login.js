@@ -33,11 +33,32 @@ const Login = () => {
       });
 
       if (response.ok) {
+
+        console.log("ok")
+
+        // localStorage.setItem('token', response.token)
+        const data = await response.json();
+        if (data.token) {
+          
+
+          console.log("Token received:", data.token);
+          
+          // Store the token in localStorage
+          localStorage.setItem('token', data.token);
+        
+          // Optionally, you can also set an expiration time for the token if needed.
+          // For example, to expire the token after 1 hour:
+          // const expirationTime = new Date().getTime() + 60 * 60 * 1000;
+          // localStorage.setItem('token', JSON.stringify({ token: data.token, expirationTime }));
+        } else {
+          console.log("Token is undefined or empty in the response data");
+        }
+
+        console.log(response.token)
         alert("Login successful"); // Changed from "Registration successful"
         setFormData({
           userid: "",
           password: "",
-
           
         }
         );
